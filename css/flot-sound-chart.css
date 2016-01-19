@@ -1,0 +1,9 @@
+#flotSoundChart .controller-bar { display: none; position: absolute; top: 0; left: 0; width:66px; height:56px; background: transparent url("images/graph_bar_icon.png") 0 0 no-repeat; z-index: 9999; cursor: pointer; }
+#flotSoundChart .controller-bar div { position: relative; }
+#flotSoundChart .controller-bar div.controller-val { width: 100%; margin-top: -30px; line-height: 30px; text-align: center; font-size: 20px; font-weight: 500; color: #6b9cd3; }
+#flotSoundChart .controller-bar div.controller-val span { font-weight: 600; }
+#flotSoundChart .labelAxisY { position: absolute; top: -20px; left: 0px; width: 30px; font-size: 10px; text-align: center; }
+/** for flot v0.7 **/
+#flotSoundChart .tickLabel { font-size: 150%\9; line-height: 150%\9; }
+/** for flot v0.8 above **/
+#flotSoundChart .flot-x-axis, #flotSoundChart .flot-y-axis { font-size: 150%\9; line-height: 150%\9; }

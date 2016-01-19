@@ -1,0 +1,4 @@
+.custom-controller { display: none; position: absolute; top: 0; left: 0; width:60px; height:100px; background: transparent url("images/cus_graph_bar_icon.png") 0 0 no-repeat; z-index: 9999; }
+.custom-controller div { position: relative; }
+div.custom-dbvalue { width: 100%; line-height: 100px; text-align: center; font-size: 12px; font-weight: 500; color: "#074e57"; cursor: pointer; }
+div.custom-dbvalue span { font-size: 16px; font-weight: 600; left: -10px; }

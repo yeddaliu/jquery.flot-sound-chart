@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Flot Sound Chart Demo</title>
+    <link href="css/flot-sound-chart.css" rel="stylesheet" type="text/css">
+    <link href="css/soundchart.css" rel="stylesheet" type="text/css">
+    <!--[if IE]><script language="javascript" type="text/javascript" src="lib/excanvas.min.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="lib/jquery-1.7.2.min.js"></script>
+    <script language="javascript" type="text/javascript" src="lib/jquery-ui-1.8.13.custom.min.js"></script>
+    <script language="javascript" type="text/javascript" src="lib/flot/jquery.flot.custom.js"></script>
+    <script language="javascript" type="text/javascript" src="jquery.flot-sound-chart.min.js"></script>
+ </head>
+    <body>
+    <h1>Flot Sound Chart(dB) Demo</h1>
+    <div id="chart_area"></div>
+
+<script id="source">
+$(function () {
+	var $chart = $.flotSoundChart($("#chart_area"), {
+		initControllerValue: 50
+	  , width:  "500"
+	  , height: "370"
+	  , controllerDragSize: 5
+	  , controllerClass: "custom-controller"
+	  , controllerTextClass: "custom-dbvalue"
+	  , plot: {
+			axisY: {
+				min:        0
+			  , max:        100
+			  , gridSize:   10
+			  , showGrid:   true
+			}
+		  , axisX: {
+				min:        1
+			  , max:        30
+			  , gridSize:   5
+			  , showGrid:   true
+			}
+		  , crosslineColor: "#6b9cd3"
+	  }
+	  , onReleaseController: function(controllerValue) {
+			console.log("Get crontroller value:"+controllerValue);	
+		}
+	});
+    
+    //push current db value to re-draw chart
+    setInterval(function() {
+		var curDb = Math.floor(Math.random()*99);
+		console.log("Push sound dB value:" + curDb);
+		$chart.pushCurrentData(curDb);
+	}, 1000);
+		
+});
+</script>
+
+ </body>
+</html>
