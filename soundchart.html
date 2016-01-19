@@ -17,39 +17,39 @@
 
 <script id="source">
 $(function () {
-	var $chart = $.flotSoundChart($("#chart_area"), {
-		initControllerValue: 50
-	  , width:  "500"
-	  , height: "370"
-	  , controllerDragSize: 5
-	  , controllerClass: "custom-controller"
-	  , controllerTextClass: "custom-dbvalue"
-	  , plot: {
-			axisY: {
-				min:        0
-			  , max:        100
-			  , gridSize:   10
-			  , showGrid:   true
-			}
-		  , axisX: {
-				min:        1
-			  , max:        30
-			  , gridSize:   5
-			  , showGrid:   true
-			}
-		  , crosslineColor: "#6b9cd3"
-	  }
-	  , onReleaseController: function(controllerValue) {
-			console.log("Get crontroller value:"+controllerValue);	
-		}
-	});
+    var $chart = $.flotSoundChart($("#chart_area"), {
+        initControllerValue: 50,
+        width:  "500",
+        height: "370",
+        controllerDragSize: 5,
+        controllerClass: "custom-controller",
+        controllerTextClass: "custom-dbvalue",
+        plot: {
+            axisY: {
+                min:        0,
+                max:        100,
+                gridSize:   10,
+                showGrid:   true,
+            },
+            axisX: {
+                min:        1,
+                max:        30,
+                gridSize:   5,
+                showGrid:   true,
+            },
+            crosslineColor: "#6b9cd3",
+        },
+        onReleaseController: function(controllerValue) {
+            console.log("Get crontroller value:"+controllerValue);
+        }
+    });
     
     //push current db value to re-draw chart
     setInterval(function() {
-		var curDb = Math.floor(Math.random()*99);
-		console.log("Push sound dB value:" + curDb);
-		$chart.pushCurrentData(curDb);
-	}, 1000);
+        var curDb = Math.floor(Math.random()*99);
+        console.log("Push sound dB value:" + curDb);
+        $chart.pushCurrentData(curDb);
+    }, 1000);
 		
 });
 </script>
