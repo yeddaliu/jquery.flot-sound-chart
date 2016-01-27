@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Flot Sound Chart Demo#2</title>
+    <link href="css/flot-sound-chart.css" rel="stylesheet" type="text/css">
+    <link href="css/soundchart.css" rel="stylesheet" type="text/css">
+    <!--[if IE]><script language="javascript" type="text/javascript" src="lib/excanvas.min.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="js/lib/requirejs/require.js"></script>
+ </head>
+    <body>
+    <h1>Flot Sound Chart(dB) Demo (requirejs)</h1>
+    <div id="chart_area"></div>
+
+<script id="source">
+(function () {
+	requirejs.config({
+		baseUrl: 'js',
+		paths: {
+			'jQuery': 'lib/jquery-1.7.2.min',
+			'jQueryUICore': 'lib/jquery-ui-1.8.13/jquery.ui.core',
+			'jQueryUIWidget': 'lib/jquery-ui-1.8.13/jquery.ui.widget',
+			'jQueryUIMouse': 'lib/jquery-ui-1.8.13/jquery.ui.mouse',
+			'jQueryUIDraggable': 'lib/jquery-ui-1.8.13/jquery.ui.draggable',
+			'flot': 'lib/flot/jquery.flot',
+			'flotStack': 'lib/flot/jquery.flot.stack',
+			'flotCrosshair': 'lib/flot/jquery.flot.crosshair',
+			'flotSoundchart': 'jquery.flot-sound-chart'
+		},
+		shim: {
+			'jCuery': { deps: [], exports: '$' },
+			'jQueryUICore': { deps: ['jQuery'], exports: '$' },
+			'jQueryUIWidget': { deps: ['jQueryUICore'], exports: '$' },
+			'jQueryUIMouse': { deps: [ 'jQueryUIWidget' ], exports: '$' },
+			'jQueryUIDraggable': { deps: ['jQueryUIMouse'], exports: '$' },
+			'flot': { deps: ['jQuery'], exports: '$' },
+			'flotStack': { deps: ['flot'], exports: '$' },
+			'flotCrosshair': { deps: ['flot'], exports: '$' },
+			'flotSoundchart': { deps: ['jQuery', 'jQueryUIDraggable', 'flot', 'flotStack', 'flotCrosshair'] }
+		},
+		waitSeconds: 10
+	});
+
+	requirejs(['flotSoundchart'], function () {
+		var $chart = $.flotSoundChart($("#chart_area"), {
+			initControllerValue: 50,
+			width:  "500",
+			height: "370",
+			controllerDragSize: 5,
+			controllerClass: "custom-controller",
+			controllerTextClass: "custom-dbvalue",
+			plot: {
+				axisY: {
+					min:        0,
+					max:        100,
+					gridSize:   10,
+					showGrid:   true,
+				},
+				axisX: {
+					min:        1,
+					max:        30,
+					gridSize:   5,
+					showGrid:   true,
+				},
+				crosslineColor: "#6b9cd3",
+			},
+			onReleaseController: function(controllerValue) {
+				console.log("Get crontroller value:"+controllerValue);
+			}
+		});
+	
+		//push current db value to re-draw chart
+		setInterval(function() {
+			var curDb = Math.floor(Math.random()*99);
+			console.log("Push sound dB value:" + curDb);
+			$chart.pushCurrentData(curDb);
+		}, 1000);
+	});
+}());
+</script>
+
+ </body>
+</html>

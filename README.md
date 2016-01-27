@@ -44,9 +44,10 @@ A jQuery plugin to show continuous sound dB values in chart based on Plotting Li
 | onReleaseController | ControllerValue: number |  callback function when user stop dragging controller, plugin will pass latest dB value to the callback function |
             
 
-# Usage
+# Demo
 
-Please check `soundchart.html`
+1. `soundchart1.html`
+2. `soundchart2.html` (require.js)
 
 # Change Log
 * 2013-07-30 v0.7  Pack all elements into specified div as "flotSoundchart" and reset related css. 

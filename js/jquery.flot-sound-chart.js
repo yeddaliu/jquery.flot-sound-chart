@@ -8,7 +8,7 @@
  * - plotting library for jQuery v0.7+
  *    - jquery.flot.js
  *    - jquery.flot.stack.js
- *    - jquery.flot.crosshaire.js
+ *    - jquery.flot.crosshair.js
  * - jquery v1.7.2+
  * - jquery-ui v1.8.13+
  *    - jquery.ui.core.js
